@@ -1,4 +1,4 @@
-int floatSensor = 9;
+int floatSensor = 8;
 int buttonState;
 
 void setup() {
@@ -19,5 +19,5 @@ void loop() {
     Serial.println("Water Level - HIGH");
   }
 
-  delay(1000);
+  delay(500);
 }

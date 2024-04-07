@@ -1,28 +1,28 @@
 int solenoid = 9;
-int floatSensor = 8;
-int buttonState;
+int floatSensor = A2;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(floatSensor, INPUT);
   pinMode(solenoid, OUTPUT);
 
 }
 
 void loop() {
-  buttonState = digitalRead(floatSensor);
+  int sensorVal = analogRead(floatSensor);
+  float voltage = sensorVal * (5.0 / 1023.0);;
   
-  if (buttonState == HIGH)
+  if (voltage > 0.2)
   {
-    Serial.println("Water Level - HGIH");
+    Serial.println("Water Level - HIGH");
     delay(1000); // CV logic
     digitalWrite(solenoid, HIGH);
-    delay(1000);
+    delay(1000); // set for however long it takes to empty
+    digitalWrite(solenoid, LOW);
   }
   else
   {
     Serial.println("Water Level - LOW");
   }
 
-  delay(1000);
+  delay(500);
 }
