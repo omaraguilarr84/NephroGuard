@@ -16,7 +16,7 @@ void loop() {
     Serial.println("Water Level - HIGH");
     delay(1000); // CV logic
     digitalWrite(solenoid, HIGH);
-    delay(1000); // set for however long it takes to empty
+    delay(10000); // however long it takes to empty
     digitalWrite(solenoid, LOW);
   }
   else
